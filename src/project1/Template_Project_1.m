@@ -29,8 +29,6 @@ k = 1;
 tolerance = 0.01;
 reasonable_speed = 0.08;
 state = 1;
-mydata = [];
-attempts = attempts + 1
 
 %%%%%%%%%%%%%% Do not modify anything outside this area %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -42,11 +40,12 @@ for t = 1:iterations
     % Retrieve the most recent poses from the Robotarium.  The time delay is
     % approximately 0.033 seconds
     p = r.get_poses();
-
+    % if t == 1
+    %     init_p = p;
+    % end
     %%%%%%%%%%%%%%%%%%%%%%%% Place Algorithm Here %%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%% Do not modify anything outside this area %%%%%%%%%%%%%%%
     % u = ???;
-    intial_p = p;
 
     % You can try with u = [0.1; 0] and [0; 1] first. Observe what happens to
     % get a sense of how it works.
@@ -123,14 +122,13 @@ for t = 1:iterations
             turn_angle = get_turn_angle(theta_dif, k, state);
             u = [reasonable_speed; turn_angle];
         else
-            success = success + 1
-            success_rate = success/attempts
-
             break;
         end
     end
 
-    mydata = [mydata [p; u; ready; theta_dif; state]];
+    % if t == 3000
+    %     fail_records = [fail_records [p]]
+    % end
     %%%%%%%%%%%%%% Do not modify anything outside this area %%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -147,8 +145,6 @@ for t = 1:iterations
     r.step();
 end
 
-success_records = [success_records [intial_p; t]];
-
 % Call r.debug() after our experiment is over!
 save('data.mat', 'data');
 r.debug(); % Do not modify
@@ -156,7 +152,6 @@ r.debug(); % Do not modify
 
 %%%%%%%%%%%%%%%%%%%%%%%% Place Helper Functions Here %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% Do not modify anything outside this area %%%%%%%%%%%%%%%
-save('mydata.mat', 'mydata');
 % function a = foo(b)
 function direction = get_direction(x_diff, y_diff);
     tan = y_diff/x_diff;
