@@ -2,4 +2,5 @@
 .ipython/
 .jupyter/
 .local/
+**/.ipynb_checkpoints
 **/.DS_Store

@@ -1,0 +1,51 @@
+MATLAB is selecting SOFTWARE OPENGL rendering.
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+              R2019b Update 3 (9.7.0.1261785) 64-bit (glnxa64)
+                             November 27, 2019
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+[Warning: "/home/robotarium_matlab_backend/jars/matlab_node.jar" not found in
+path.] 
+[> In javarmpath (line 39)
+  In server_init (line 5)
+  In run (line 91)
+  In actually_main (line 5)
+  In run (line 91)] 
+[Warning: MATLAB has disabled some advanced graphics rendering features by
+switching to software OpenGL. For more information, click <a
+href="matlab:opengl('problems')">here</a>.] 
+
+state =
+
+     2
+
+
+state =
+
+     3
+
+
+state =
+
+     4
+
+
+state =
+
+     5
+
+
+state =
+
+     6
+
+
+state =
+
+     7
+

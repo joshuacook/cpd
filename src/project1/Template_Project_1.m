@@ -67,7 +67,12 @@ for t = 1:iterations
         [theta_dif, distance] = sniff(target1, p, state);
         if distance > tolerance
             turn_angle = get_turn_angle(theta_dif, k, state);
-            u = [reasonable_speed; turn_angle];
+            if distance < 0.1
+                u = [reasonable_speed/3; turn_angle];
+            else
+                u = [reasonable_speed; turn_angle];
+            end
+
         else
             state = 2
             u = [0; 0];
@@ -79,7 +84,7 @@ for t = 1:iterations
             u = [0; turn_angle];
         else
             state = 3
-            end_t = t + 379;
+            end_t = t + 381;
             u = [0; 0];
         end
     elseif state == 3
@@ -102,7 +107,11 @@ for t = 1:iterations
         [theta_dif, distance] = sniff(target1, p, state);
         if distance > tolerance
             turn_angle = get_turn_angle(theta_dif, k, state);
-            u = [reasonable_speed; turn_angle];
+            if distance < 0.1
+                u = [reasonable_speed/3; turn_angle];
+            else
+                u = [reasonable_speed; turn_angle];
+            end
         else
             state = 6
             u = [0; 0];
@@ -120,7 +129,11 @@ for t = 1:iterations
         [theta_dif, distance] = sniff(target2, p, state);
         if distance > tolerance
             turn_angle = get_turn_angle(theta_dif, k, state);
-            u = [reasonable_speed; turn_angle];
+            if distance < 0.1
+                u = [reasonable_speed/3; turn_angle];
+            else
+                u = [reasonable_speed; turn_angle];
+            end
         else
             break;
         end
